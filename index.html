@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="author"	content="Conrad Davis Jr" />
+	<title>Play Books Prototype</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic|Josefin+Slab:400,700italic' rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lib/highlight.pack.js"></script>
+	<script type="text/javascript" src="js/lib/modernizr.custom.min.js"></script>
+	<script type="text/javascript" src="js/examples.js"></script>
+	
+	<script type="text/javascript" src="js/lib/greensock/TweenMax.min.js"></script>
+	<script type="text/javascript" src="scrollmagic/uncompressed/ScrollMagic.js"></script>
+	<script type="text/javascript" src="scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
+	<script type="text/javascript" src="scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
+</head>
+
+
+<style>
+	body {
+		background-color: black;
+		height: 10000px;
+	}
+	.shutters {
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		top: 0;
+	    left: 0;
+		background-image: url("images/comic-bg.png");
+		background-size: cover;
+	}
+	.shutter {
+		background: white;
+		width: 100%;
+	}
+
+	.top-shutter {
+		position: absolute;
+	    /*height: 750px;*/
+	    height: 50.1%;
+	    /*top: -410px;*/
+	    /*top: -27%;*/
+	    top: 0%;
+		/*clip-path: polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%);*/
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+		transition: clip-path 0.5s;
+	}
+
+	.bottom-shutter {
+		position: absolute;
+		/*height: 660px;*/
+		height: 50%;
+		/*bottom: -140px;*/
+		/*bottom: -13%;*/
+		bottom: 0%;
+	    /*clip-path: polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%);*/
+	    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	    transition: clip-path 0.5s;
+	}
+
+</style>
+
+
+
+
+<body>
+	<div class="container">
+
+
+	<main class="shutters">
+		<div class="shutter top-shutter"></div>
+		<div class="shutter bottom-shutter"></div>
+	</main>
+
+	<div id="trigger1" class="spacer s0" style="background-color: red; width: 50%; height: 100px; margin-top: 980px"></div>
+	<div id="trigger2" class="spacer s0" style="background-color: red; width: 50%; height: 100px; margin-top: 1500px"></div>
+
+	</div>
+
+
+
+
+	<script>
+		// init controller
+		var controller = new ScrollMagic.Controller();
+
+		// 
+		// build scene
+		// 
+
+		// STEP 1
+		var scene = new ScrollMagic.Scene({ triggerElement: "#trigger1", duration: 300 })
+						.setTween(".top-shutter", 0.5, {clipPath: 'polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%)'}) // trigger a TweenMax.to tween
+						.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
+						.addTo(controller);
+
+		var scene = new ScrollMagic.Scene({ triggerElement: "#trigger1", duration: 300 })
+						.setTween(".bottom-shutter", 0.5, {clipPath: 'polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%)'}) // trigger a TweenMax.to tween
+						.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
+						.addTo(controller);
+
+
+		// STEP 2
+		// build scene
+		var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
+						.setTween(".top-shutter", 0.5, {top: '-27%'}) // trigger a TweenMax.to tween
+						.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
+						.addTo(controller);
+
+		var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
+						.setTween(".bottom-shutter", 0.5, {bottom: '-13%'}) // trigger a TweenMax.to tween
+						.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
+						.addTo(controller);
+
+		// build scene
+		// var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 300})
+		// 				// animate color and top border in relation to scroll position
+		// 				.setTween("#animate1", {borderTop: "30px solid white", backgroundColor: "blue", scale: 0.7}) // the tween durtion can be omitted and defaults to 1
+		// 				.addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+		// 				.addTo(controller);
+	</script>
+</body>
+</html>
