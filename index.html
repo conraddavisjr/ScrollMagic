@@ -68,18 +68,23 @@
 
 		.phone-image { 
 	        width: 530px;
-		    position: relative;
+		    position: fixed;
 		    right: -135px;
 		    float: right;
 		    z-index: 1;
 		}
 
+		.phone-to-center { 
+			transform: scale(1.2) translateX(-54%);
+			/*transition: 0.5s*/
+		}
+
 		.book-stack-image {
 		    width: 1200px;
 		    margin-top: 200px;
-		    right: -380px;
+		    right: -150px;
 		    float: left;
-		    position: absolute;
+		    position: relative;
 		}
 		.shutters {
 			position: fixed;
@@ -123,9 +128,9 @@
 			/*bottom: -140px;*/
 			/*bottom: -13%;*/
 			bottom: 0%;
-		    /*clip-path: polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%);*/
-		    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-		    transition: clip-path 0.5s 0.1s;
+	    /*clip-path: polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%);*/
+	    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	    transition: clip-path 0.5s 0.1s;
 		}
 
 	</style>
@@ -178,7 +183,7 @@
 
 			// INTRO
 			var bookIntro = new TimelineMax()
-				.from(".book-stack-image", 0.5, {right: '-320px'})
+				.from(".book-stack-image", 0.5, {right: '-100px'})
 				.from(".phone-image", 1, {right: '-100%'}, '-=0.5')
 				// .from(".bottom-shutter", 0, {clipPath: 'polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%)'});
 
@@ -190,7 +195,8 @@
 			var booksTween1 = new TimelineMax();
 			// booksTween1.stop();
 			booksTween1.to(".top-shutter", 0, {clipPath: 'polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%)'})
-								 .to(".bottom-shutter", 0, {clipPath: 'polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%)'});
+								 .to(".bottom-shutter", 0, {clipPath: 'polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%)'})
+								 .to(".phone-image", 1, {className:"+=phone-to-center"});
 
 
 			// build scene 1
