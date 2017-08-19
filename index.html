@@ -177,13 +177,17 @@
 			// 
 
 			// STEP 1
-			var scene = new ScrollMagic.Scene({ triggerElement: "#trigger1" })
-							.setTween(".top-shutter", 0.5, {clipPath: 'polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%)'}) // trigger a TweenMax.to tween
-							.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
-							.addTo(controller);
+			// 
+			// open shutters, 
 
-			var scene = new ScrollMagic.Scene({ triggerElement: "#trigger1" })
-							.setTween(".bottom-shutter", 0.5, {clipPath: 'polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%)'}) // trigger a TweenMax.to tween
+			// build tween
+			var booksTween1 = new TimelineMax()
+				.to(".top-shutter", 0, {clipPath: 'polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%)'})
+				.to(".bottom-shutter", 0, {clipPath: 'polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%)'});
+
+			// build scene 1
+			var booksScene1 = new ScrollMagic.Scene({ triggerElement: "#trigger1" })
+							.setTween(booksTween1) // trigger a TweenMax.to tween
 							.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
 							.addTo(controller);
 
