@@ -69,10 +69,9 @@
 		.phone-image { 
       width: 530px;
 	    position: fixed;
-	    right: -135px;
+	    right: -100%;
 	    float: right;
 	    z-index: 1;
-	    transition: 0.5s;
 		}
 
 		.phone-to-center { 
@@ -83,9 +82,10 @@
 		.book-stack-image {
 		    width: 1200px;
 		    margin-top: 200px;
-		    right: -150px;
+		    right: -100px;
 		    float: left;
 		    position: relative;
+		    transition: 0.5s;
 		}
 		.shutters {
 			position: fixed;
@@ -134,6 +134,15 @@
 	    transition: clip-path 0.5s 0.1s;
 		}
 
+		/* BOOKS - book-intro-animation */
+		.book-intro-animation .book-stack-image {
+			right: -150px
+		}
+		.book-intro-animation .phone-image {
+			right: -135px;
+			transition: 1s;
+		}
+
 		/* BOOKS - scene 1 Animations */
 		.scene1-animation .bottom-shutter {
 			clip-path: polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%);
@@ -143,6 +152,10 @@
 		}
 		.scene1-animation .phone-image {
 			transform: scale(1.2) translateX(-54%);
+		}
+		.scene1-animation .book-stack-image {
+			right: 160px;
+			opacity: 0;
 		}
 
 	</style>
@@ -195,8 +208,7 @@
 
 			// INTRO
 			var bookIntro = new TimelineMax()
-				.from(".book-stack-image", 0.5, {right: '-100px'})
-				.from(".phone-image", 1, {right: '-100%'}, '-=0.5');
+					bookIntro.to(".container", 0, {className:"+=book-intro-animation"});
 
 			// SCENE 1
 			// 
