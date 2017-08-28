@@ -37,10 +37,13 @@
 				<image class="book-stack-image" src="images/book-stack.png"/>
 			</section>
 
-			<main class="shutters">
+			<main class="shutters-container">
 				<div class="shutter-bg-image"></div>
-				<div class="shutter top-shutter"></div>
-				<div class="shutter bottom-shutter"></div>
+				<svg id="shutters-svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 751 667">
+					<style>#top-shutter, #bottom-shutter{fill:#FFFFFF;}</style>
+					<path id="top-shutter" d="M0 2.5v664l750-210V2.5z"/>
+					<path id="bottom-shutter" d="M750 1v666H0V208z"/>
+				</svg>
 			</main>
 
 
@@ -84,12 +87,12 @@
 			// STEP 2
 			// build scene
 			var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
-							.setTween(".top-shutter", 0.5, {top: '-27%'}) // trigger a TweenMax.to tween
+							.setTween("#top-shutter", 0.5, {top: '-27%'}) // trigger a TweenMax.to tween
 							// .addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
 							.addTo(controller);
 
 			var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
-							.setTween(".bottom-shutter", 0.5, {bottom: '-13%'}) // trigger a TweenMax.to tween
+							.setTween("#bottom-shutter", 0.5, {bottom: '-13%'}) // trigger a TweenMax.to tween
 							// .addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
 							.addTo(controller);
 

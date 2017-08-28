@@ -65,13 +65,20 @@ z-index: 1;
     position: relative;
     transition: 0.5s;
 }
-.shutters {
+.shutters-container {
 	position: fixed;
 	height: 100%;
 	width: 100%;
 	top: 0;
     left: 0;
 }
+
+#shutters-svg-container {
+	position: absolute;
+	top: 0;
+	height: 100vh;
+}
+
 .shutter {
 	background: white;
 	width: 100%;
@@ -88,28 +95,12 @@ z-index: 1;
 	z-index: -1;
 }
 
-.top-shutter {
-	position: absolute;
-    /*height: 750px;*/
-    height: 50.1%;
-    /*top: -410px;*/
-    /*top: -27%;*/
-    top: 0%;
-	/*clip-path: polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%);*/
-	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-	transition: clip-path 0.5s 0.1s;
+#top-shutter {
+	transform: translateY(-40%)
 }
 
-.bottom-shutter {
-	position: absolute;
-	/*height: 660px;*/
-	height: 50.1%;
-	/*bottom: -140px;*/
-	/*bottom: -13%;*/
-	bottom: 0%;
-/*clip-path: polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%);*/
-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-transition: clip-path 0.5s 0.1s;
+#bottom-shutter {
+	transform: translateY(20%)
 }
 
 /* BOOKS - book-intro-animation */
