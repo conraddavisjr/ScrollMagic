@@ -40,7 +40,6 @@
 			<main class="shutters-container">
 				<div class="shutter-bg-image"></div>
 				<svg id="shutters-svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 751 667">
-					<style>#top-shutter, #bottom-shutter{fill:#FFFFFF;}</style>
 					<path id="top-shutter" d="M0 2.5v664l750-210V2.5z"/>
 					<path id="bottom-shutter" d="M750 1v666H0V208z"/>
 				</svg>
@@ -52,9 +51,6 @@
 
 		</div>
 
-
-
-		<script type="text/javascript" src="js/lib/jquery.min.js"></script>
 		<script>
 			// init controller
 			var controller = new ScrollMagic.Controller();
@@ -65,7 +61,8 @@
 
 			// INTRO
 			var bookIntro = new TimelineMax()
-					bookIntro.to(".container", 0, {className:"+=book-intro-animation"});
+				bookIntro.to(".book-stack-image", 0.5, { ease: Power3.easeIn, right: -150, opacity: 1 })
+				bookIntro.fromTo(".phone-image", 1, { right: '-90%' }, { right: '-14%', visibility: 'visible' });
 
 			// SCENE 1
 			// 
@@ -74,27 +71,27 @@
 			// build tween
 			var booksTween1 = new TimelineMax();
 			// booksTween1.stop();
-			booksTween1.to(".container", 0, {className:"+=scene1-animation"});
+			booksTween1.fromTo(".phone-image", 1, { scale: 1, right: '-14%' }, { scale: 1.2, right: '23%' });
 
 
-			// build scene 1
+			// // build scene 1
 			var booksScene1 = new ScrollMagic.Scene({ triggerElement: "#trigger1" })
 							.setTween(booksTween1) // trigger a TweenMax.to tween
 							.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
 							.addTo(controller);
 
 
-			// STEP 2
-			// build scene
-			var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
-							.setTween("#top-shutter", 0.5, {top: '-27%'}) // trigger a TweenMax.to tween
-							// .addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
-							.addTo(controller);
+			// // STEP 2
+			// // build scene
+			// var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
+			// 				.setTween("#top-shutter", 0.5, {top: '-27%'}) // trigger a TweenMax.to tween
+			// 				// .addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
+			// 				.addTo(controller);
 
-			var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
-							.setTween("#bottom-shutter", 0.5, {bottom: '-13%'}) // trigger a TweenMax.to tween
-							// .addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
-							.addTo(controller);
+			// var scene2 = new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
+			// 				.setTween("#bottom-shutter", 0.5, {bottom: '-13%'}) // trigger a TweenMax.to tween
+			// 				// .addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
+			// 				.addTo(controller);
 
 			// build scene
 			// var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 300})

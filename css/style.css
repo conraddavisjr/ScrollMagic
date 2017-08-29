@@ -45,16 +45,12 @@ p {
 }
 
 .phone-image { 
-width: 530px;
-position: fixed;
-right: -100%;
-float: right;
-z-index: 1;
-}
-
-.phone-to-center { 
-	transform: scale(1.2) translateX(-54%);
-	/*transition: 0.5s*/
+	width: 530px;
+	position: fixed;
+	right: -14%;
+	float: right;
+	visibility: hidden;
+	z-index: 1;
 }
 
 .book-stack-image {
@@ -62,6 +58,7 @@ z-index: 1;
     margin-top: 200px;
     right: -100px;
     float: left;
+    opacity: 0; 
     position: relative;
     transition: 0.5s;
 }
@@ -85,7 +82,6 @@ z-index: 1;
 }
 
 .shutter-bg-image {
-	/*position: fixed;*/
 	height: 100%;
 	width: 100%;
 	top: 0;
@@ -93,6 +89,11 @@ z-index: 1;
 	background-image: url("../images/comic-bg.png");
 	background-size: cover;
 	z-index: -1;
+}
+
+#top-shutter, 
+#bottom-shutter {
+	fill:#FFFFFF;
 }
 
 #top-shutter {
@@ -107,18 +108,13 @@ z-index: 1;
 .book-intro-animation .book-stack-image {
 	right: -150px
 }
+
 .book-intro-animation .phone-image {
 	right: -135px;
-	transition: 1s;
+	/*transition: 1s;*/
 }
 
 /* BOOKS - scene 1 Animations */
-.scene1-animation .bottom-shutter {
-	clip-path: polygon(0% 55%, 100% 20%, 100% 100%, 0% 100%);
-}
-.scene1-animation .top-shutter {
-	clip-path: polygon(0% 0%, 100% 0%, 100% 55%, 0% 90%);
-}
 .scene1-animation .phone-image {
 	transform: scale(1.2) translateX(-54%);
 }
